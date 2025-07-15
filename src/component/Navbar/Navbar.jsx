@@ -1,6 +1,7 @@
 'use client';
 import { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -9,25 +10,18 @@ const Navbar = () => {
         setIsOpen(!isOpen);
     };
 
-    const navItems = [
-        { href: "/", label: "Home" },
-        { href: "/mymusic", label: "Favorite Music" },
-        { href: "/supportme", label: "Support Me" },
-        { href: "/aboutme", label: "About Me" },
-    ];
-
     return (
         <header className="sticky top-0 z-50 bg-gradient-to-r from-indigo-600 to-purple-600 shadow-lg">
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div className="flex h-16 items-center justify-between">
                     {/* Logo/Profile Section */}
-                    <div className="flex items-center space-x-3">
+                    <div className="flex h-16 items-center gap-x-4">
                         <Image
                             src="/img/profil.jpg"
                             alt="Profile"
                             width={40}
                             height={40}
-                            className="rounded-full border-2 border-white shadow-md transition-all hover:scale-105"
+                            className="rounded-full border-2 border-white shadow-md transition-all hover:scale-105 px-3 py-3"
                             priority
                         />
                         <span className="text-white text-lg font-semibold md:text-xl">
@@ -36,18 +30,27 @@ const Navbar = () => {
                     </div>
 
                     {/* Desktop Navigation */}
-                    <div className="hidden md:block">
-                        <div className="flex items-center space-x-8">
-                            {navItems.map((item) => (
-                                <a
-                                    key={item.href}
-                                    href={item.href}
-                                    className="text-white text-sm font-medium hover:text-yellow-300 transition-colors duration-200 px-1 py-2 rounded-md"
-                                >
-                                    {item.label}
-                                </a>
-                            ))}
-                        </div>
+                    <div className="hidden md:flex items-center gap-x-4">
+                        <Link href={'/'} className="block px-3 py-2 text-white text-base font-medium hover:bg-indigo-600 hover:text-yellow-300 rounded-md transition-all"
+                            onClick={toggleMenu}
+                        >
+                            Home
+                        </Link>
+                        <Link href={'/mymusic'} className="block px-3 py-2 text-white text-base font-medium hover:bg-indigo-600 hover:text-yellow-300 rounded-md transition-all"
+                            onClick={toggleMenu}
+                        >
+                            Favorite Music
+                        </Link>
+                        <Link href={'/support'} className="block px-3 py-2 text-white text-base font-medium hover:bg-indigo-600 hover:text-yellow-300 rounded-md transition-all"
+                            onClick={toggleMenu}
+                        >
+                            Support Me
+                        </Link>
+                        <Link href={'/about'} className="block px-3 py-2 text-white text-base font-medium hover:bg-indigo-600 hover:text-yellow-300 rounded-md transition-all"
+                            onClick={toggleMenu}
+                        >
+                            About Me
+                        </Link>
                     </div>
 
                     {/* Mobile Menu Button */}
@@ -63,18 +66,28 @@ const Navbar = () => {
             </div>
 
             {/* Mobile Navigation */}
-            <div className={`md:hidden ${isOpen ? 'block' : 'hidden'}`}>
-                <div className="space-y-1 px-2 pb-3 pt-2 bg-indigo-700 shadow-lg rounded-b-lg">
-                    {navItems.map((item) => (
-                        <a
-                            key={item.href}
-                            href={item.href}
-                            className="block px-3 py-2 text-white text-base font-medium hover:bg-indigo-600 hover:text-yellow-300 rounded-md transition-all p-4"
+            <div className={`md:hidden ${isOpen ? 'block' : 'hidden'} gap-x-2`}>
+                <div className="flex flex-col gap-y-2 px-2 pb-3 pt-2 bg-indigo-700 shadow-lg rounded-b-lg">
+                        <Link href={'/'} className="block px-3 py-2 text-white text-base font-medium hover:bg-indigo-600 hover:text-yellow-300 rounded-md transition-all"
                             onClick={toggleMenu}
                         >
-                            {item.label}
-                        </a>
-                    ))}
+                            Home
+                        </Link>
+                        <Link href={'/mymusic'} className="block px-3 py-2 text-white text-base font-medium hover:bg-indigo-600 hover:text-yellow-300 rounded-md transition-all"
+                            onClick={toggleMenu}
+                        >
+                            Favorite Music
+                        </Link>
+                        <Link href={'/support'} className="block px-3 py-2 text-white text-base font-medium hover:bg-indigo-600 hover:text-yellow-300 rounded-md transition-all"
+                            onClick={toggleMenu}
+                        >
+                            Support Me
+                        </Link>
+                        <Link href={'/about'} className="block px-3 py-2 text-white text-base font-medium hover:bg-indigo-600 hover:text-yellow-300 rounded-md transition-all"
+                            onClick={toggleMenu}
+                        >
+                            About Me
+                        </Link>
                 </div>
             </div>
         </header>
