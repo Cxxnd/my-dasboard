@@ -1,4 +1,4 @@
-'use client';
+'use client'
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
@@ -11,7 +11,7 @@ const Navbar = () => {
     };
 
     return (
-        <header className="sticky top-0 z-50 bg-gradient-to-r from-indigo-600 to-purple-600 shadow-lg">
+        <header className="bg-gradient-to-r from-indigo-600 to-purple-600 shadow-lg fixed top-0 left-0 right-0 z-50">
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div className="flex h-16 items-center justify-between">
                     {/* Logo/Profile Section */}
